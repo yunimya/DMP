@@ -101,7 +101,7 @@ class DMP_Model(object):
                     mapping_matrix = tf.get_variable("mapping_matrix",
                                                      shape=[input_temp.get_shape().as_list()[-1], 2 * self.hidden_size],
                                                      trainable=True)
-                    input_temp = tf.einsum("ij,jk->ik", input_temp, mapping_matrix)
+                    input_temp = tf.einsum("ij,jk->ik", input_temp, mapping_matrix)  ##矩阵乘法 
                     input_temp = tf.nn.relu(input_temp, name="activate")
                     input_temp = tf.nn.dropout(input_temp, self.dropout_rate)
 
